@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hello_flutter/components/ads_slider.dart';
 import 'package:hello_flutter/components/vehicle.dart';
+import 'detail_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -42,6 +43,14 @@ class HomeScreen extends StatelessWidget {
           shrinkWrap: true,
           children: _notice
               .map((e) => ListTile(
+                  onTap: (){
+                    Navigator.push<void>(
+                      context,
+                      MaterialPageRoute<void>(
+                        builder: (BuildContext context) => DetailScreen(),
+                      ),
+                    );
+                  },
                   leading: Icon(Icons.notifications),
                   title: Text(e),
                   subtitle: Text("서브타이틀"),
