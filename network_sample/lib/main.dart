@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:network_sample/provider/ajax_provider.dart';
 import 'package:get/get.dart';
-import 'package:network_sample/screens/listview_screen.dart';
+import 'package:network_sample/provider/post_data_provider.dart';
+import 'package:network_sample/screens/provider_demo_screen.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider<PostDataProvider>(
+      create: (context) => PostDataProvider(),
+    )
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -17,7 +21,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData.dark().copyWith(),
-      home: const ListViewScreen(),
+      home: const ProviderDemoScreen(),
     );
   }
 }

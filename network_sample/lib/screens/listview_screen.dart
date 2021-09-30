@@ -38,7 +38,7 @@ class _ListViewScreenState extends State<ListViewScreen> {
                       ],
                       actionExtentRatio: 1 / 6,
                       child:
-                          ListTile(title: Text(snapshot.data![index].title)));
+                          ListTile(title: Text(snapshot.data?[index].title ?? "")));
                 },
               );
             } else if (snapshot.hasError) {
