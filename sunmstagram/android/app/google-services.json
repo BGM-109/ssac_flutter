@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1075620938371",
+    "project_id": "ssac-sunm-stagram",
+    "storage_bucket": "ssac-sunm-stagram.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1075620938371:android:25f25f7b3a8f50867611b6",
+        "android_client_info": {
+          "package_name": "com.example.sunmstagram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1075620938371-fcmhr5ji49ipdbemjh6usijkkao3a4ug.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLfrEVr7-rSWUs06Sg5RNEWZ2_ZKub84o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1075620938371-fcmhr5ji49ipdbemjh6usijkkao3a4ug.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
