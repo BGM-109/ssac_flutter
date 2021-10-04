@@ -10,7 +10,7 @@ class AccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("kxxclear",
+        title: const Text("blackpink",
             style: TextStyle(
               color: Colors.black,
             )),

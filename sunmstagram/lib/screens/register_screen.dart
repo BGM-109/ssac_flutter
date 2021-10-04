@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:sunmstagram/components/custom_button.dart';
 import 'package:sunmstagram/constants.dart';
 import 'package:sunmstagram/screens/home_screen.dart';
 
@@ -20,45 +22,52 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text("Register"),
-        TextField(
-          keyboardType: TextInputType.emailAddress,
-          textAlign: TextAlign.center,
-          decoration: customInputDecoration.copyWith(
-            labelText: "Email",
+        body: Padding(
+      padding: const EdgeInsets.all(32.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextField(
+            keyboardType: TextInputType.emailAddress,
+            textAlign: TextAlign.center,
+            decoration: customInputDecoration.copyWith(
+              labelText: "Email",
+            ),
+            onChanged: (text) {
+              email = text;
+            },
           ),
-          onChanged: (text) {
-            email = text;
-          },
-        ),
-        TextField(
-          textAlign: TextAlign.center,
-          obscureText: true,
-          decoration: customInputDecoration.copyWith(
-            labelText: "Password",
+          TextField(
+            textAlign: TextAlign.center,
+            obscureText: true,
+            decoration: customInputDecoration.copyWith(
+              labelText: "Password",
+            ),
+            onChanged: (text) {
+              password = text;
+            },
           ),
-          onChanged: (text) {
-            password = text;
-          },
-        ),
-        ElevatedButton(
-          child: const Text("Register"),
-          onPressed: () async {
-            try {
-              final newUser = await _auth.createUserWithEmailAndPassword(
-                  email: email!, password: password!);
-              if (newUser != null) {
-                Navigator.pushNamed(context, HomeScreen.id);
+          SizedBox(
+            height: 24.0,
+          ),
+          CustomButton(
+            title: "Register",
+            color: Colors.black54,
+            onPressed: () async {
+              try {
+                final newUser = await _auth.createUserWithEmailAndPassword(
+                    email: email!, password: password!);
+                if (newUser != null) {
+                  Navigator.pushNamed(context, HomeScreen.id);
+                }
+              } catch (e) {
+                print(e);
               }
-            } catch (e) {
-              print(e);
-            }
-          },
-        )
-      ],
+            },
+          ),
+        ],
+      ),
     ));
   }
 }

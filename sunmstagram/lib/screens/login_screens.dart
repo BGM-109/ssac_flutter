@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sunmstagram/components/custom_button.dart';
 import 'package:sunmstagram/constants.dart';
 import 'package:sunmstagram/screens/home_screen.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -24,11 +25,11 @@ class _LoginScreenState extends State<LoginScreen> {
     return ModalProgressHUD(
       inAsyncCall: showSpinner,
       child: Scaffold(
-        body: Center(
+        body: Padding(
+          padding: const EdgeInsets.all(32.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Login"),
               TextField(
                 keyboardType: TextInputType.emailAddress,
                 decoration: customInputDecoration.copyWith(
@@ -44,7 +45,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   onChanged: (text) {
                     password = text;
                   }),
-              ElevatedButton(
+              SizedBox(
+                height: 24.0,
+              ),
+              CustomButton(
+                title: "Login",
+                color: Colors.black54,
                 onPressed: () async {
                   setState(() {
                     showSpinner = true;
@@ -53,8 +59,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     final user = await _auth.signInWithEmailAndPassword(
                         email: email!, password: password!);
                     if (user != null) {
-                      Navigator.of(context)
-                          .pushNamedAndRemoveUntil(HomeScreen.id, (Route<dynamic> route) => false);
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                          HomeScreen.id, (Route<dynamic> route) => false);
                     }
                     setState(() {
                       showSpinner = false;
@@ -63,7 +69,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     print(e);
                   }
                 },
-                child: Text("Login"),
               ),
             ],
           ),
