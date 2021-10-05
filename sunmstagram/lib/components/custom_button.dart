@@ -1,35 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton(
       {Key? key,
       required this.title,
       this.color = Colors.white,
+      required this.icon,
       required this.onPressed})
       : super(key: key);
   final String title;
   final Color color;
   final Function()? onPressed;
+  final Widget icon;
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return ElevatedButton.icon(
       style: ElevatedButton.styleFrom(
-        minimumSize: const Size.fromHeight(40.0),
+        minimumSize: const Size(double.infinity, 50),
         primary: color,
         onPrimary: Colors.white,
-        textStyle: const TextStyle(fontSize: 16),
       ),
       onPressed: onPressed,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const SizedBox(
-            height: 24.0,
-          ),
-          Text(title,),
-        ],
-      ),
+      icon: icon,
+      label: Text(title),
     );
   }
 }

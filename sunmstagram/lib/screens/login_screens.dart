@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sunmstagram/components/custom_button.dart';
 import 'package:sunmstagram/constants.dart';
 import 'package:sunmstagram/screens/home_screen.dart';
@@ -45,10 +46,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   onChanged: (text) {
                     password = text;
                   }),
-              SizedBox(
+              const SizedBox(
                 height: 24.0,
               ),
               CustomButton(
+                icon: const FaIcon(FontAwesomeIcons.signInAlt),
                 title: "Login",
                 color: Colors.black54,
                 onPressed: () async {

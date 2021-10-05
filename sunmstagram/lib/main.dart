@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sunmstagram/provider/google_sign_in_provider.dart';
 import 'package:sunmstagram/screens/create_screen.dart';
 import 'package:sunmstagram/screens/home_screen.dart';
 import 'package:sunmstagram/screens/initial_screen.dart';
@@ -18,20 +20,23 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primaryColor: Colors.white,
+    return ChangeNotifierProvider(
+      create: (context) => GoogleSignInProvider(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primaryColor: Colors.white,
+        ),
+        initialRoute: InitialScreen.id,
+        routes: {
+          InitialScreen.id: (context) => const InitialScreen(),
+          HomeScreen.id: (context) => const HomeScreen(),
+          LoginScreen.id: (context) => const LoginScreen(),
+          RegisterScreen.id: (context) => const RegisterScreen(),
+          CreateScreen.id: (context) => const CreateScreen(),
+        },
+        home: const LoginScreen(),
       ),
-      initialRoute: InitialScreen.id,
-      routes: {
-        InitialScreen.id: (context) => const InitialScreen(),
-        HomeScreen.id: (context) => const HomeScreen(),
-        LoginScreen.id: (context) => const LoginScreen(),
-        RegisterScreen.id: (context) => const RegisterScreen(),
-        CreateScreen.id: (context) => const CreateScreen(),
-      },
-      home: const LoginScreen(),
     );
   }
 }
